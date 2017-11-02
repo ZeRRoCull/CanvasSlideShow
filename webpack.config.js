@@ -16,5 +16,9 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: 'CanvasSlideShow'
         })
-    ]
+    ],
+    devServer: {
+        stats: "errors-only",
+        port: 8090
+    }
 };
