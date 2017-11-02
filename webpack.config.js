@@ -12,9 +12,30 @@ module.exports = {
         path: PATHS.build,
         filename: '[name].js'
     },
+    module: {
+        rules: [
+            {
+                test: /\.pug/,
+                loader: "pug-loader",
+                options: {
+                    pretty: true
+                }
+            },
+            {
+                test: /\.js$/,
+                exclude: [/node_modules/,/public/,/\.idea/],
+                loader: "babel-loader"
+            },
+            {
+                test: /\.sass$/,
+                exclude: [/node_modules/, /public/,/\.idea/],
+                loader: ["style-loader","css-loader","sass-loader"]
+            }
+        ]
+    },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'CanvasSlideShow'
+            template: PATHS.src + '/index.pug'
         })
     ],
     devServer: {
